@@ -42,6 +42,7 @@ class ProcessView {
 
     this.mem = new Memory(pid)
 
+    Globals.lock()
     let regions = this.mem.getRegions()
 
     for (let region of shuffle(regions)) {
@@ -64,6 +65,7 @@ class ProcessView {
         break
       }
     }
+    Globals.unlock()
 
     this.world_geometry = new THREE.BufferGeometry()
     this.world_geometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(MAX_POINTS * 3), 3))

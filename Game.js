@@ -54,7 +54,7 @@ class Game {
       })
 
       Globals.onClick.push(function (ev) {
-        if (Globals.lock === true) {return;}
+        if (Globals.locked === true) {return;}
         Globals.character.onClick(new THREE.Vector2(ev.nativeEvent.locationX, ev.nativeEvent.locationY))
       })
 

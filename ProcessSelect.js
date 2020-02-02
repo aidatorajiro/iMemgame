@@ -20,6 +20,7 @@ let font = new THREE.Font(suji)
 
 class ProcessSelect {
   constructor () {
+    Globals.lock()
     this.pids = Pid.getPids().filter(
       (x) => {
         try {
@@ -30,6 +31,7 @@ class ProcessSelect {
         }
       }
     )
+    Globals.unlock()
 
     this.pid = undefined
     this.selected = false

@@ -6,7 +6,9 @@ http://opensource.org/licenses/mit-license.php
 */
 
 let Globals = {
-  lock: false,
+  locked: false,
+  lock: () => {Globals.locked = true},
+  unlock: () => {setTimeout(() => {Globals.locked = false}, 100)},
   edge_size: 60,
   delta: undefined,
   scene: undefined,
