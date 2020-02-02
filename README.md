@@ -8,11 +8,14 @@
 
 1. Install Xcode on your PC.
 2. Clone or download this project.
-3. Open ios/memgame.xcworkspace (white one, not blue one).
-4. Click blue icon named "memgame" at left menubar.
-5. Click "memgame" under "TARGETS".
-6. Go to "Signing & Capabilities" and set "Team".
-7. Run with Command + R.
+3. Run in Terminal: `sudo gem install cocoapods` or `brew install cocoapods`
+4. `cd [ clone directory ]`
+5. `npm install` (In you don't have node.js, install it first.)
+6. Open ios/memgame.xcworkspace (white one, not blue one).
+7. Click blue icon named "memgame" at left menubar.
+8. Click "memgame" under "TARGETS".
+9. Go to "Signing & Capabilities" and set "Team".
+10. Run with Command + R.
 
 ## How to run (jailbroken version)
 
