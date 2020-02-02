@@ -154,13 +154,14 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(mach_vm_region:(nonnull NSNumber *)task a
   mach_port_t objectname_c = 0;
   kern_return_t ret_c = mach_vm_region(task_c, &address_c, &regionsize_c, infotype_c, (vm_region_info_t)&info_c, &infocount_c, &objectname_c);
   NSNumber *ret_o = [NSNumber numberWithUnsignedLongLong:(unsigned long long)ret_c];
+  NSNumber *address_o = [NSNumber numberWithUnsignedLongLong:(unsigned long long)address_c];
   NSNumber *regionsize_o = [NSNumber numberWithUnsignedLongLong:(unsigned long long)regionsize_c];
   NSMutableArray *info_o = [NSMutableArray array];
   //for (int i = 0; i < sizeof(info_c); i++) {
   //    NSNumber *number = [NSNumber numberWithInt:((char*)&info_c)[i]];
   //    [info_o addObject:number];
   //}
-  return [NSArray arrayWithObjects:ret_o, regionsize_o, info_o, nil];
+  return [NSArray arrayWithObjects:ret_o, address_o, regionsize_o, info_o, nil];
 }
 
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(mach_vm_read_overwrite:(nonnull NSNumber *)task address:(nonnull NSNumber *)address length:(nonnull NSNumber *)length)

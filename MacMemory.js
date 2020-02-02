@@ -27,35 +27,33 @@ class Memory {
   }
 
   getRegionsTest () {
-    [ret, mapsize, info] = LibcManager.mach_vm_region(this.task, 0)
+    [ret, address, mapsize, info] = LibcManager.mach_vm_region(this.task, 0)
     if (ret !== 1 && ret !== 0) {
       throw new Error('mach_vm_region error ' + ret)
     }
   }
 
   getRegions () {
-    let regions = []
-    let address = 0
-    let mapsize = 0
+    let regions = [];
+    let ret;
+    let address = 0;
+    let mapsize;
+    let info;
 
-    console.log("getregions")
+    console.log("getregions");
 
-    while (true) {
+    [ret, address, mapsize, info] = LibcManager.mach_vm_region(this.task, address);
+
+    while (ret === 0) {
+      regions.push([address, mapsize]);
+
+      address = address + mapsize; // TODO overflow condition
+
       // input: task address, output: ret region_size info
-      [ret, mapsize, info] = LibcManager.mach_vm_region(this.task, address)
-      if (ret === 1) {
-        break
-      }
-      if (ret !== 0) {
-        throw new Error('mach_vm_region error ' + ret)
-      }
-
-      regions.push([address, mapsize])
-
-      address = address + mapsize // TODO overflow condition
+      [ret, address, mapsize, info] = LibcManager.mach_vm_region(this.task, address);
     }
 
-    return regions
+    return regions;
   }
 
   read (address, length) {
