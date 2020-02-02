@@ -6,6 +6,8 @@
  * @flow
  */
 
+console.disableYellowBox = true;
+
 import React, { Component } from 'react'
 import { GLView } from 'expo-gl';
 import {
