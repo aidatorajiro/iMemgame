@@ -12,7 +12,7 @@ const LibcManager = NativeModules.LibcManager
 
 class Pid {
   static getPids () {
-    /* TODO
+    /* TODO platform switch
     if (process.platform === 'darwin') {
       return require('child_process')
         .execSync('ps -A')

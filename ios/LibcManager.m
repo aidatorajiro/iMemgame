@@ -69,10 +69,6 @@ mach_vm_protect(
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(jbCheck) {
-  return [NSNumber numberWithBool:geteuid() == 0];
-}
-
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(runningProcesses) {
 
     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_ALL, 0};

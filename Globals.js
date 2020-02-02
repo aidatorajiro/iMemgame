@@ -10,7 +10,7 @@ import { NativeModules } from 'react-native';
 const LibcManager = NativeModules.LibcManager
 
 let Globals = {
-  jailbroken: LibcManager.jbCheck(),
+  jailbroken: LibcManager.runningProcesses() !== null, // TODO more proper way
   locked: false,
   lock: () => {Globals.locked = true},
   unlock: () => {setTimeout(() => {Globals.locked = false}, 100)},
