@@ -40,8 +40,9 @@
 19. `ldid -Sent.xml memgame`
 20. `uicache`
 21. `exit`
-22. `npm install` (If you don't have node.js, install it first.)
-23. `npm start`
-24. Connect your PC and phone in same Wi-fi network.
+22. `sudo gem install cocoapods` or `brew install cocoapods`
+23. `npm install` (If you don't have node.js, install it first.)
+24. `npm start`
+25. Connect your PC and phone in same Wi-fi network.
 
 Then "memgame" icon will appear in your phone. Tap it to play!
