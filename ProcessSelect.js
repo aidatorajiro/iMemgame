@@ -24,9 +24,10 @@ class ProcessSelect {
     this.pids = Pid.getPids().filter(
       (x) => {
         try {
-          new Memory(x).getRegions()
+          new Memory(x).getRegionsTest()
           return true
         } catch (e) {
+          console.log(e)
           return false
         }
       }

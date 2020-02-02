@@ -6,6 +6,7 @@ http://opensource.org/licenses/mit-license.php
 */
 
 let Globals = {
+  jailbroken: true,
   locked: false,
   lock: () => {Globals.locked = true},
   unlock: () => {setTimeout(() => {Globals.locked = false}, 100)},

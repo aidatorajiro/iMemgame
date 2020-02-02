@@ -5,30 +5,40 @@ This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 
+import Globals from './Globals'
 import { NativeModules } from 'react-native';
 
 const LibcManager = NativeModules.LibcManager
 
 class Memory {
   constructor (pid) {
-    let mytask = LibcManager.mach_task_self()
-    this.task = mytask
-    console.log("task", mytask)
-    /*TODO
-    let ret = LibcManager.task_for_pid(mytask, pid, taskRef)
-    if (ret !== 0) {
-      throw new Error('task_for_pid error ' + ret)
+    if (Globals.jailbroken) {
+      let mytask = LibcManager.mach_task_self()
+      let [ret, task] = LibcManager.task_for_pid(mytask, pid)
+      if (ret !== 0) {
+        throw new Error('task_for_pid error ' + ret)
+      }
+      this.task = task
+    } else {
+      let mytask = LibcManager.mach_task_self()
+      this.task = mytask
     }
+    console.log("task", this.task)
+  }
 
-    this.task = taskRef.deref()
-    this.task = 0
-    */
+  getRegionsTest () {
+    [ret, mapsize, info] = LibcManager.mach_vm_region(this.task, 0)
+    if (ret !== 1 && ret !== 0) {
+      throw new Error('mach_vm_region error ' + ret)
+    }
   }
 
   getRegions () {
     let regions = []
     let address = 0
     let mapsize = 0
+
+    console.log("getregions")
 
     while (true) {
       // input: task address, output: ret region_size info
@@ -39,8 +49,6 @@ class Memory {
       if (ret !== 0) {
         throw new Error('mach_vm_region error ' + ret)
       }
-
-      console.log("address", address)
 
       regions.push([address, mapsize])
 

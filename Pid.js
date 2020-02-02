@@ -5,6 +5,11 @@ This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 
+import Globals from './Globals'
+import { NativeModules } from 'react-native';
+
+const LibcManager = NativeModules.LibcManager
+
 class Pid {
   static getPids () {
     /* TODO
@@ -35,7 +40,12 @@ class Pid {
     } else {
       throw new Error('not yet inplemented on your operating system')
     }*/
-    return [2525]
+    if (Globals.jailbroken) {
+      console.log("aaa")
+      return LibcManager.runningProcesses().map((x) => (parseInt(x.ProcessID)))
+    } else {
+      return [2525]
+    }
   }
 }
 
