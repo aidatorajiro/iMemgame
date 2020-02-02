@@ -5,8 +5,12 @@ This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 
+import { NativeModules } from 'react-native';
+
+const LibcManager = NativeModules.LibcManager
+
 let Globals = {
-  jailbroken: true,
+  jailbroken: LibcManager.jbCheck(),
   locked: false,
   lock: () => {Globals.locked = true},
   unlock: () => {setTimeout(() => {Globals.locked = false}, 100)},

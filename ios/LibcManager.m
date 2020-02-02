@@ -1,6 +1,8 @@
 #import "LibcManager.h"
 #include <mach/mach.h>
 #import <sys/sysctl.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR // Imports from /usr/lib/system/libsystem_kernel.dylib
 // xnu-4570.1.46/osfmk/vm/vm_user.c
@@ -67,6 +69,10 @@ mach_vm_protect(
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(jbCheck) {
+  return [NSNumber numberWithBool:geteuid() == 0];
+}
+
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(runningProcesses) {
 
     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_ALL, 0};
@@ -122,7 +128,7 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(runningProcesses) {
         }
     }
 
-    return [NSArray init];
+    return nil;
 }
 
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(mach_task_self)
