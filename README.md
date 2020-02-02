@@ -25,7 +25,7 @@
 7. Overwrite /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/SDKSettings.plist with edited SDKSettings.plist (you will need computer password)
 8. Clone or download this project.
 9. Open ios/memgame.xcworkspace (white one, not blue one).
-10. Build with Command + R.
+10. Build with Command + B.
 11. Jailbreak your iPhone and install OpenSSH. Please set the root password for security.
 12. Run this command in Terminal: `scp -r /Users/[ your computer username here ]/Library/Developer/Xcode/DerivedData/memgame-*/Build/Products/Debug-iphoneos/memgame.app root@[ your phone IP address here ]:/Applications/memgame.app`
 13. Enter phone root password.
