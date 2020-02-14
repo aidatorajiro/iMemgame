@@ -5,15 +5,15 @@ This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 
-import { NativeModules } from 'react-native';
+import { NativeModules } from 'react-native'
 
 const LibcManager = NativeModules.LibcManager
 
-let Globals = {
+const Globals = {
   jailbroken: LibcManager.runningProcesses() !== null, // TODO more proper way
   locked: false,
-  lock: () => {Globals.locked = true},
-  unlock: () => {setTimeout(() => {Globals.locked = false}, 100)},
+  lock: () => { Globals.locked = true },
+  unlock: () => { setTimeout(() => { Globals.locked = false }, 100) },
   edge_size: 60,
   delta: undefined,
   scene: undefined,
@@ -34,4 +34,4 @@ let Globals = {
   height: undefined
 }
 
-module.exports = Globals;
+module.exports = Globals

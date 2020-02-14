@@ -6,7 +6,7 @@ http://opensource.org/licenses/mit-license.php
 */
 
 import Globals from './Globals'
-import { NativeModules } from 'react-native';
+import { NativeModules } from 'react-native'
 
 const LibcManager = NativeModules.LibcManager
 
@@ -39,9 +39,9 @@ class Pid {
         .map(x => parseInt(x[0]))
     } else {
       throw new Error('not yet inplemented on your operating system')
-    }*/
+    } */
     if (Globals.jailbroken) {
-      console.log("aaa")
+      console.log('aaa')
       return LibcManager.runningProcesses().map((x) => (parseInt(x.ProcessID)))
     } else {
       return [2525]

@@ -5,6 +5,8 @@ This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 
+import { PixelRatio } from 'react-native'
+
 const THREE = require('three')
 
 const ProcessView = require('./ProcessView')
@@ -13,8 +15,6 @@ const Character = require('./Character')
 const Footprints = require('./Footprints')
 
 const Globals = require('./Globals.js')
-
-import { PixelRatio } from 'react-native';
 
 class Game {
   init () {
@@ -54,7 +54,7 @@ class Game {
       })
 
       Globals.onClick.push(function (ev) {
-        if (Globals.locked === true) {return;}
+        if (Globals.locked === true) { return }
         Globals.character.onClick(new THREE.Vector2(ev.nativeEvent.locationX, ev.nativeEvent.locationY))
       })
 
