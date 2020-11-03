@@ -46,3 +46,8 @@
 25. Connect your PC and phone in same Wi-fi network.
 
 Then "memgame" icon will appear in your phone. Tap it to play!
+
+
+# Libraries
+This software uses a framework called React Native (Copyright (c) Facebook, Inc. and its affiliates)
+
